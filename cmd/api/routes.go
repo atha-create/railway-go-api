@@ -10,8 +10,8 @@ func (app *application) routes() *httprouter.Router {
 	router := httprouter.New()
 
 	// Define the available routes
-	router.HandlerFunc(http.MethodGet, "/v1/healthcheck", app.healthcheckHandler)
-	router.HandlerFunc(http.MethodGet, "/", app.homeHandler)
+	router.Handle(http.MethodGet, "/v1/healthcheck", app.healthcheckHandler)
+	router.Handle(http.MethodGet, "/", app.homeHandler)
 
 	return router
 }
