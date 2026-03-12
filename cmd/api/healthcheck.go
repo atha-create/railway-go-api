@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"fmt"
 )
 
 func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
@@ -16,4 +17,8 @@ func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Reques
 		app.logger.Error(err.Error())
 		http.Error(w, "server error", http.StatusInternalServerError)
 	}
+}
+
+func (app *application) homeHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+    fmt.Fprintln(w, "Welcome to my first SaaS!")
 }
